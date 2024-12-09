@@ -592,7 +592,7 @@ public class Arena {
 
       Wrapper wrapper = WrapperRegistry.getFromMaterial(loc.getBlock().getType());
       //Test if the block has custom NBT
-      PlatinumArenas.INSTANCE.getLogger().info("Debug: Wrapper is " + wrapper + " for " + loc.getBlock().getType() + " index " + data.index);
+      //PlatinumArenas.INSTANCE.getLogger().info("Debug: Wrapper is " + wrapper + " for " + loc.getBlock().getType() + " index " + data.index);
       boolean blank = wrapper != null && loc.getBlock().getState() instanceof TileState && wrapper.isBlank((TileState) (loc.getBlock().getState()));
 
       if (data.blockTypes.length == 0) {

@@ -15,9 +15,9 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.TileState;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.craftbukkit.v1_21_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_21_R1.block.CraftBlock;
-import org.bukkit.craftbukkit.v1_21_R1.block.data.CraftBlockData;
+import org.bukkit.craftbukkit.v1_21_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_21_R2.block.CraftBlock;
+import org.bukkit.craftbukkit.v1_21_R2.block.data.CraftBlockData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -136,11 +136,15 @@ public class Section {
         IBlockData blockData = ((CraftBlockData) data).getState();
         BlockPosition position = block.getPosition();
 
-        if (old.t() && blockData.b() != old.b()) {
+        // x: hasBlockEntity()
+        // b: getBlock()
+        if (old.x() && blockData.b() != old.b()) {
           if (world instanceof net.minecraft.world.level.World) {
+            // o: removeBlockEntity()
             ((net.minecraft.world.level.World) world).o(position);
           } else {
-            world.a(position, Blocks.a.o(), 0);
+            // a: setBlock()
+            world.a(position, Blocks.a, 0);
           }
         }
 
